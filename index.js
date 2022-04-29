@@ -15,13 +15,13 @@ async function inquire(){
                 name: "action",
                 message: "What would you like to do?",
                 choices: [
-                    {name: "View All Departments", value: 1},
-                    {name: "View All Roles", value: 2},
-                    {name: "View All Employess", value: 3},
-                    {name: "Add a department", value: 4},
-                    {name: "Add a role", value: 5},
-                    {name: "Add an employee", value: 6},
-                    {name: "Update an employee role", value: 7},
+                    "View All Departments",
+                    "View All Roles",
+                    "View All Employess",
+                    "Add a department",
+                    "Add a role",
+                    "Add an employee",
+                    "Update an employee role",
                 ]
             }
         ])
@@ -37,6 +37,11 @@ async function viewAllDepartments(){
 
 // View all roles - READ - "SELECT * FROM [table_name]";
 
+async function viewAllRoles(){
+
+};
+
+
 // View all employees - READ - "SELECT * FROM [table_name]";
 
 async function viewAllEmployees(){
@@ -49,52 +54,20 @@ async function viewAllEmployees(){
 
 // Add a department - CREATE - "INSERT INTO [table_name] (col1, col2) VALUE (value1, value2)"
 
+async function createDepartment(){
+
+}
+
 // Add a role - CREATE - 
 async function createRole(){
     // SELECT the existing department out for the 'departments' table
 
-    const departments = [
-        {
-            id: 1,
-            name: "Executive"
-        },
-        {
-            id: 2,
-            name: "Transfiguration"
-        },
-        {
-            id: 3,
-            name: "Charms"
-        },
-        {
-            id: 4,
-            name: "Potions"
-        },
-        {
-            id: 5,
-            name: "History of Magic"
-        },
-        {
-            id: 6,
-            name: "Defence Against the Dark Arts"
-        },
-        {
-            id: 7,
-            name: "Astronomy"
-        },
-        {
-            id: 8,
-            name: "Herbology"
-        },
-        {
-            id: 9,
-            name: "Divination"
-        },
-        {
-            id: 10,
-            name: "Care of Maginal Creatures"
-        },
-    ]
+    const department = await db.query.map((department) => {
+        return {
+            name: department.name,
+            value: department.id
+        };
+    });
 
       // .map() the resulds from 'department' to question data for inquirer
 
@@ -124,4 +97,12 @@ async function createRole(){
 
 // Add an employee - CREATE - 
 
+async function createEmployee() {
+
+}
+
 // Update an employee
+
+async function updateEmployee() {
+    
+}
