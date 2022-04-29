@@ -1,7 +1,12 @@
 const mysql = require('mysql2');
-
 const db = require('./db/connection');
+
 // Present user with options
+
+db.query('SELECT * FROM employee', (err, results) =>{
+    console.log(err)
+    console.table(results)
+});
 
 // View all departments - READ - "SELECT * FROM [table_name]";
 function viewAllDepartments(){
