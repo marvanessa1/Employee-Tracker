@@ -1,6 +1,12 @@
+const mysql = require('mysql2');
+
+const db = require('./db/connection');
 // Present user with options
 
 // View all departments - READ - "SELECT * FROM [table_name]";
+function viewAllDepartments(){
+
+};
 
 // View all roles - READ - "SELECT * FROM [table_name]";
 
