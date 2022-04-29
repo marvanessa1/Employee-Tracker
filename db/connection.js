@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+const util = require('util')
 
 
 const connection = mysql.createConnection({
@@ -9,6 +10,8 @@ const connection = mysql.createConnection({
     password: '',
     database: 'employees'
 });
+
+connection.query = util.promisify(connection.query);
 
 connection.connect(function (err){
     if (err) {

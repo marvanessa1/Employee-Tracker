@@ -1,21 +1,25 @@
 const mysql = require('mysql2');
 const db = require('./db/connection');
 
+
 // Present user with options
 
-db.query('SELECT * FROM employee', (err, results) =>{
-    console.log(err)
-    console.table(results)
-});
-
 // View all departments - READ - "SELECT * FROM [table_name]";
-function viewAllDepartments(){
+async function viewAllDepartments(){
 
 };
 
 // View all roles - READ - "SELECT * FROM [table_name]";
 
 // View all employees - READ - "SELECT * FROM [table_name]";
+
+async function viewAllEmployees(){
+
+    const employees = await db.query('SELECT * FROM employee');
+
+    console.table(employees);
+
+};
 
 // Add a department - CREATE - "INSERT INTO [table_name] (col1, col2) VALUE (value1, value2)"
 
