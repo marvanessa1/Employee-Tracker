@@ -104,8 +104,49 @@ async function createDepartment() {
 
 
 async function createRole() {
+    inquirer .prompt([
+        {
+            type: "input",
+            message: "What is the name of the role?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the salary of the role?",
+            name: "salary"
+        }
+    ])
+    .then((res) => {
+        const name = res.name
+        const salary = res.salary;
 
-}
+        db.seeDepartments().then(([data])=> {
+            const options = data.map(({id, name})=> ({
+                name: name,
+                value: id,
+            }))
+            inquirer .prompt ([
+                {
+                    type: "list",
+                    message: "In which department does this role belong in?",
+                    choices: options,
+                    name: "department_id",
+                }
+            ])
+            .then((res) => {
+                let newRole = {
+                    title: name,
+                    salary: salary,
+                    department_id: res.department_id,
+                };
+                db.addRole(newRole).then(()=>
+                console.log(`${name} was successfully added to roles`))
+                .then(() => askAction());
+            })
+        })
+
+    })
+};
 
 async function createEmployee() {
 
