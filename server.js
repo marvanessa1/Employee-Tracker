@@ -66,14 +66,22 @@ function viewAllDepartments() {
 // View all roles - READ - "SELECT * FROM [table_name]";
 
 async function viewAllRoles() {
-
+    db.seeRoles()
+    .then(([roles]) => {
+        console.table(roles)
+    })
+    .then(() => askAction());
 };
 
 
 // View all employees - READ - "SELECT * FROM [table_name]";
 
 async function viewAllEmployees() {
-
+    db.seeEmployees()
+    .then(([employees]) => {
+        console.table(employees)
+    })
+    .then(() => askAction());
 };
 
 // Add a department - CREATE - "INSERT INTO [table_name] (col1, col2) VALUE (value1, value2)"
