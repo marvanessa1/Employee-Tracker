@@ -1,46 +1,45 @@
-INSERT INTO department (name)
-VALUES ("Executive"),
-       ("Transfiguration"),
-       ("Charms"),
-       ("Potions"),
-       ("History of Magic"),
-       ("Defence Against the Dark Arts"),
-       ("Astronomy"),
-       ("Herbology"),
-       ("Divination"),
-       ("Care of Maginal Creatures");
+INSERT INTO 
+    department (id, name)
+VALUES 
+    (1, "Executive"),
+    (2, "Transfiguration"),
+    (3, "Charms"),
+    (4, "Potions"),
+    (5, "History of Magic"),
+    (6, "Defence Against the Dark Arts"),
+    (7, "Astronomy"),
+    (8, "Herbology"),
+    (9, "Divination"),
+    (10,"Care of Maginal Creatures");
 
-INSERT INTO role (title, salary, department_id)
-VALUES ("Headmaster", 250000, 1),
-       ("Deputy Headmistress", 150000, 2),
-       ("Tenure Charms Faculty", 100000, 3),
-       ("Tenure Potions Faculty", 100000, 4),
-       ("Adjunct Potions Faculty", 75000, 4),
-       ("Tenure History Faculty", 0, 5),
-       ("Adjunct Defense Against the Dark Arts Faculty", 75000, 6),
-       ("Tenure Astronomy Faculty", 100000, 7),
-       ("Tenure Herbolody Faculty", 100000, 8),
-       ("Tenure Diviniation Faculty", 100000, 9),
-       ("Adjunct Diviniation Faculty", 100000, 9),
-       ("Adjunct Care of Magical Creatures Faculty", 75000, 10);
+INSERT INTO 
+role (id, title, salary, department_id)
+VALUES 
+    (1, "Headmaster", 250000, 1),
+    (2, "Deputy Headmistress", 150000, 2),
+    (3, "Tenure Faculty", 100000, 3),
+    (4, "Adjunct Faculty", 75000, 4);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Albus", "Dumbledore", 1, NULL),
-       ("Minerva", "McGonagall", 2, 1),
-       ("Alastor", "Moody",6, 2),
-       ("Aurora", "Sinistra", 5, 2),
-       ("Cuthbert", "Binns", 5, 2),
-       ("Dolores", "Umbridge", 6, NULL),
-       ("Filius", "Flitwick", 3, 2),
-       ("Firenze", "Centaur", 10, 2),
-       ("Gilderoy", "Lockhart", 6, 2),
-       ("Horace", "Slughorn", 4, 2),
-       ("Pomona", "Sprout", 8, 2),
-       ("Quirinus", "Quirell", 6, 2),
-       ("Remus", "Lupis", 6, 2),
-       ("Rubeus", "Hagrid", 11, 2),
-       ("Severus", "Snape", 4, 2),
-       ("Sybill", "Trelawney", 9, 2);
+
+INSERT INTO 
+    employee (id, first_name, last_name, role_id, manager_id)
+VALUES 
+    (1, "Albus", "Dumbledore", 1, NULL),
+    (2, "Minerva", "McGonagall", 2, 1),
+    (3, "Alastor", "Moody",4, 2),
+    (4, "Aurora", "Sinistra", 3, 2),
+    (5, "Cuthbert", "Binns", 3, 2),
+    (6, "Dolores", "Umbridge", 4, NULL),
+    (7, "Filius", "Flitwick", 3, 2),
+    (8, "Firenze", "Centaur", 4, 2),
+    (9, "Gilderoy", "Lockhart", 4, 2),
+    (10, "Horace", "Slughorn", 4, 2),
+    (11, "Pomona", "Sprout", 3, 2),
+    (12, "Quirinus", "Quirell", 4, 2),
+    (13, "Remus", "Lupis", 4, 2),
+    (14, "Rubeus", "Hagrid", 4, 2),
+    (15, "Severus", "Snape", 3, 2),
+    (16, "Sybill", "Trelawney", 3, 2);
 
 
 
