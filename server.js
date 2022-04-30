@@ -4,7 +4,7 @@ const db = require('./db');
 
 const actions = [{
     type: "list",
-    name: "action",
+    name: "actions",
     message: "What would you like to do?",
     choices: [
         "View All Departments",
@@ -15,7 +15,6 @@ const actions = [{
         "Add an employee",
         "Update an employee role",
     ],
-    name: "actions",
 }]
 
 function askAction() {
@@ -87,7 +86,20 @@ async function viewAllEmployees() {
 // Add a department - CREATE - "INSERT INTO [table_name] (col1, col2) VALUE (value1, value2)"
 
 async function createDepartment() {
-
+    inquirer .prompt([
+        {
+            type: "input",
+            message: "What is the name of the department?",
+            name: "newDepartment"
+        }
+    ])
+    .then((res) => {
+        const departmentName = res.newDepartment
+        let newDepartment = { name: departmentName};
+        db.addDepartment(newDepartment).then(() => 
+            console.log(`${departmentName} was successfully added to departments`))
+        .then(() => askAction());
+    })
 }
 
 
