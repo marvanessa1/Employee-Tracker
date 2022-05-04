@@ -102,7 +102,7 @@ async function createDepartment() {
     })
 }
 
-
+// Add a role - CREATE
 async function createRole() {
     inquirer .prompt([
         {
@@ -148,8 +148,73 @@ async function createRole() {
     })
 };
 
+// Addd an employee - CREATE
 async function createEmployee() {
+    inquirer .prompt([
+        {
+            type: "input",
+            message: "What is first name of the employee?",
+            name: "first_name"
+        },
+        {
+            type: "input",
+            message: "What is last name of the employee?",
+            name: "last_name"
+        }
+    ])
+    .then ((res) => {
+        const first_name = res.first_name;
+        const last_name= res.last_name;
 
+        db.seeRoles().then(([roles]) => {
+            const choices = roles.map(({id, title})=> ({
+                name: title,
+                value: id
+            }));
+
+            inquirer .prompt([
+                {
+                type: "list",
+                message: "What is the role of the employee?",
+                choices: choices,
+                name: "role_id"
+                }
+            ])
+            .then((res) => {
+                const role_id = res.role_id;
+
+                db.seeEmployees().then(([employees]) => {
+                    const addManager = employees.map(
+                        ({id, first_name, last_name}) => ({
+                        name: `${first_name} ${last_name}`,
+                        value: id
+                    })
+                    );
+                    addManager.unshift({ name: "NONE", value: null});
+
+                    inquirer .prompt([
+                        {
+                            type: "list",
+                            message: "Who is the manager of the employee?",
+                            choices: addManager,
+                            name: "manager_id"
+                        }
+                    ])
+                    .then((res) => {
+                        let storeEmployee = {
+                            first_name: first_name,
+                            last_name: last_name,
+                            role_id: role_id,
+                            manager_id: res.manager_id
+                        };
+                        db.addEmployee(storeEmployee).then(() =>
+                        console.log(`${first_name} ${last_name} was successfully added to employees!`)).then(() => 
+                        askAction());
+                    })
+                })
+            })
+        })
+    })
 }
 
 async function updateEmployeeRole() {
