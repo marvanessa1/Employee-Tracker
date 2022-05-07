@@ -2,19 +2,19 @@ const { query } = require('./connection')
 const connection = require('./connection')
 
 class db {
-    constructor(connection){
+    constructor(connection) {
         this.connection = connection
     }
 
-    seeDepartments(){
+    seeDepartments() {
         return this.connection.promise().query('SELECT * FROM department');
     }
 
-    seeRoles(){
+    seeRoles() {
         return this.connection.promise().query('SELECT * FROM role');
     }
 
-    seeEmployees(){
+    seeEmployees() {
         return this.connection.promise().query('SELECT * FROM employee');
     }
 
@@ -28,6 +28,9 @@ class db {
 
     addEmployee(employee) {
         return this.connection.promise().query('INSERT INTO employee set ?', employee);
+    }
+    employeeUpdate(update) {
+        return this.connection.promise().query('INSERT INTO role set ?', update)
     }
 }
 
