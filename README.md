@@ -2,7 +2,7 @@
 
 Author: Vanessa Martinez
 <br>
-Github Link: https://github.com/marvanessa1/EMployee-Tracker
+Github Link: https://github.com/marvanessa1/Employee-Tracker
 
 
 
@@ -68,7 +68,7 @@ node server.js
 
 ## App Demo
 
-- [Demo Walkthrough](https://watch.screencastify.com/v/C3erMxqj5AMQFLkpaomw) 
+- [Demo Walkthrough](https://watch.screencastify.com/v/FJHsrtGFFhYaMOu48Opa) 
 
 ## Contact Me
 
