@@ -11,6 +11,8 @@ const {
     employeeUpdate 
 } = require('./db');
 
+// const { getEmployees, getRoles} = require('./helpers/choices')
+
 // initial user prompt choices, list of actions available
 const actions = [{
     type: "list",
@@ -232,7 +234,11 @@ async function createEmployee() {
 
 async function updateEmployeeRole() {    
     db.seeEmployees().then(([employees])=> {
-        const employeeChoices = employees.map(({ first_name, last_name, id})=> ({
+        const employeeChoices = employees.map(({ 
+            first_name,
+            last_name,
+            id
+        }) => ({
             name: `${first_name} ${last_name}`,
             value: id
         }))
@@ -240,39 +246,36 @@ async function updateEmployeeRole() {
             {
                 type: "list",
                 message: "Which employee's role would you like to update?",
-                name: "employee_id",
-                choices: employeeChoices
+                choices: employeeChoices,
+                name: "employee_id"
             }
         )
         .then((res) => {
-            const employee_id = res.employee_id
+            employee_id = res.employee_id;
         })
         db.seeRoles().then(([roles])=> {
-            const roleChoices = roles.map(({id, title}) => ({
+            const roleChoices = roles.map(({ id, title})=> ({
                 name: title,
                 value: id
             }))
             inquirer.prompt(
                 {
                     type: "list",
-                    message: "What role would you like to assign the employee?",
+                    message: "What is the updated role of the employee?",
                     choices: roleChoices,
                     name: "role_id"
                 }
             )
-            .then((res)=> {
-              const role_id = res.role_id;
-
-              let updateRole = {
-                  employee_id: employee_id, 
-                  role_id: role_id
-              }
-              db.employeeUpdate(updateRole).then(()=>
-              console.log(`Employee's role was successfully update`)).then(() => askAction)
-            })
-            
+                .then((res) =>{
+                    let updateRole = {
+                        role_id: res.role_id,
+                        employee_id: employee_id
+                    }
+                    db.employeeUpdate(updateRole).then(()=>console.log(`The role of the employee was successfully updated`)).then(()=>askAction())
+                })
         })
     })
+
 
 }
 

@@ -30,7 +30,7 @@ class db {
         return this.connection.promise().query('INSERT INTO employee set ?', employee);
     }
     employeeUpdate(update) {
-        return this.connection.promise().query('INSERT INTO role set ?', update)
+        return this.connection.promise().query('UPDATE employee set role_id = ? WHERE role_id = ?;', update)
     }
 }
 
